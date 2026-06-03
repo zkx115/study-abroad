@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>留学选校智能助手</title>
+<style>
+:root{--bg:#0f0f14;--card:#1a1a24;--border:#2a2a3a;--text:#e0e0e8;--muted:#8888a0;--accent:#7c5cfc;--glow:rgba(124,92,252,0.3);--green:#34d399;--orange:#f59e0b;--red:#ef4444;--blue:#60a5fa;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+h1{font-size:1.6em;font-weight:700;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;font-size:.9em}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 16px var(--glow)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-sec{background:var(--border);color:var(--text)}
+.btn-sec:hover{background:#3a3a50}
+.btn:disabled{opacity:.5;cursor:default}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flex{display:flex}.gap8{gap:8px}.wrap{flex-wrap:wrap}.center{align-items:center}.jcenter{justify-content:center}.between{justify-content:space-between}
+.mb8{margin-bottom:8px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}.mt16{margin-top:16px}.p16{padding:16px}.p24{padding:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:.78em;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select{padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.9em;outline:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.form-group select[multiple]{min-height:100px}.form-group .hint{font-size:.7em;color:var(--muted)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.tab{padding:8px 16px;cursor:pointer;border:none;background:none;color:var(--muted);font-size:.88em;border-radius:6px 6px 0 0}
+.tab.active{color:var(--accent);background:var(--card);border:1px solid var(--border);border-bottom-color:var(--card)}
+.tbl-wrap{overflow-x:auto;overflow-y:auto;border:1px solid var(--border);border-radius:8px;max-height:70vh}
+table{width:100%;border-collapse:collapse;font-size:.82em;white-space:nowrap}
+th{position:sticky;top:0;background:var(--card);color:var(--muted);padding:10px 8px;text-align:left;border-bottom:2px solid var(--border);z-index:1;font-weight:600;font-size:.8em}
+td{padding:8px;border-bottom:1px solid #1f1f2a;color:var(--text)}
+tr:hover td{background:rgba(124,92,252,.05)}
+.badge{padding:2px 8px;border-radius:10px;font-size:.75em;font-weight:600}
+.badge-safety{background:rgba(52,211,153,.12);color:var(--green)}
+.badge-match{background:rgba(96,165,250,.12);color:var(--blue)}
+.badge-reach{background:rgba(245,158,11,.12);color:var(--orange)}
+.badge-lottery{background:rgba(239,68,68,.12);color:var(--red)}
+.link{color:var(--accent);text-decoration:none;font-size:.8em}
+.link:hover{text-decoration:underline}
+.warn-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:12px;font-size:.85em;color:var(--orange)}
+.score{font-size:1.3em;font-weight:700}
+.pass-text{color:var(--green)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:16px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:.8em;color:var(--muted);margin-bottom:16px}
+.stats-bar span{white-space:nowrap}.stats-bar strong{color:var(--text)}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+</style>
+<script src="js/programs.js"></script>
+<script src="js/advisor.js"></script>
+</head>
+<body>
+<div class="p24" style="max-width:1400px;margin:0 auto">
+  <div class="flex center between mb24">
+    <h1>留学选校智能助手</h1>
+    <div style="font-size:.75em;color:var(--muted)">基于 QS + THE 2025 真实排名 · 全浏览器端运行</div>
+  </div>
+
+  <!-- 统计栏 -->
+  <div class="stats-bar" id="statsBar"></div>
+
+  <div id="formSection">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('basic')">硬性条件</button>
+      <button class="tab" onclick="switchTab('prefs')">偏好设置</button>
+      <button class="tab" onclick="switchTab('bg')">软背景</button>
+    </div>
+
+    <form id="studentForm" onsubmit="submitForm(event)">
+      <div id="tab-basic" class="card p24 mb16">
+        <div class="form-grid">
+          <div class="form-group"><label>GPA (4.0)</label><input type="number" id="gpa" min="2.0" max="4.0" step="0.1" value="3.2" required></div>
+          <div class="form-group"><label>语言类型</label><select id="lang_type"><option value="IELTS">IELTS</option><option value="TOEFL">TOEFL</option></select></div>
+          <div class="form-group"><label id="lang_label">IELTS</label><input type="number" id="lang_score" min="5.0" max="9.0" step="0.5" value="7.0" required></div>
+          <div class="form-group"><label>GRE (留空=未考)</label><input type="number" id="gre" min="260" max="340" placeholder="留空" value=""></div>
+          <div class="form-group"><label>总预算 USD</label><input type="number" id="budget" min="10000" max="300000" step="1000" value="150000" required></div>
+          <div class="form-group"><label>最低排名 (0=不限)</label><input type="number" id="min_rank" min="0" max="500" value="50"></div>
+        </div>
+      </div>
+
+      <div id="tab-prefs" class="card p24 mb16" style="display:none">
+        <div class="form-grid">
+          <div class="form-group"><label>安全偏好</label><select id="safety_pref"><option value="medium">中等</option><option value="high">高</option><option value="low">低</option></select></div>
+          <div class="form-group"><label>职业目标</label><select id="career_goal"><option value="stay_abroad">留在国外</option><option value="return_china">回国</option><option value="startup">创业</option></select></div>
+          <div class="form-group"><label>签证友好 (OPT/PSW)</label><select id="visa_friendly"><option value="true">是</option><option value="false">否</option></select></div>
+        </div>
+      </div>
+
+      <div id="tab-bg" class="card p24 mb16" style="display:none">
+        <div class="form-grid">
+          <div class="form-group"><label>研究/项目经历</label><select id="research" multiple size="4">
+            <option value="machine learning">ML</option><option value="deep learning">DL</option><option value="NLP">NLP</option>
+            <option value="CV">CV</option><option value="data mining">数据挖掘</option><option value="fintech">金融科技</option>
+            <option value="quantum">量子计算</option><option value="blockchain">区块链</option>
+          </select></div>
+          <div class="form-group"><label>工作/实习经历</label><select id="work" multiple size="4">
+            <option value="internship at Google">Google实习</option><option value="research assistant">科研助理</option>
+            <option value="open source contributor">开源贡献</option><option value="published paper">发表论文</option>
+            <option value="startup founder">创业</option><option value="accounting internship">会计实习</option>
+          </select></div>
+          <div class="form-group"><label>已修先修课</label><select id="prerequisites" multiple size="5">
+            <option value="Calculus I-II">微积分</option><option value="Linear Algebra">线性代数</option>
+            <option value="Probability & Statistics">概率统计</option><option value="Statistics">统计</option>
+            <option value="Discrete Mathematics">离散数学</option><option value="Programming (Python)">Python</option>
+            <option value="Database Systems">数据库</option><option value="Microeconomics">微观经济学</option>
+            <option value="Macroeconomics">宏观经济学</option><option value="Financial Accounting">会计</option>
+            <option value="Corporate Finance">公司金融</option><option value="Econometrics">计量经济学</option>
+          </select></div>
+        </div>
+      </div>
+
+      <div class="flex gap8 mt16 mb16">
+        <button type="submit" class="btn btn-primary" id="submitBtn">开始智能选校</button>
+        <button type="button" class="btn btn-sec" onclick="resetForm()">重置</button>
+      </div>
+    </form>
+    <div id="loading" style="display:none;text-align:center;padding:32px">
+      <div class="spinner" style="margin:0 auto;width:24px;height:24px"></div>
+      <p style="margin-top:8px;color:var(--muted)">正在分析 2,423 条专业数据...</p>
+    </div>
+  </div>
+
+  <div id="results" style="display:none">
+    <div id="recommendationStats" class="flex between center mb8" style="padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px"></div>
+    <div id="resultTable" class="mb16"></div>
+    <div class="flex center mb16">
+      <button class="btn btn-sec" onclick="backToForm()">← 返回修改条件</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── 数据 ───────────────────────────
+const W = { gpa: 28, language: 17, gre: 12, background: 15, prerequisite: 15, extra: 6, competitiveness: 7 };
+
+// ─── 初始化 ──────────────────────────
+document.getElementById('lang_type').addEventListener('change', function() {
+  const s = document.getElementById('lang_score'), l = document.getElementById('lang_label');
+  if (this.value === 'IELTS') { s.min = 5; s.max = 9; s.step = 0.5; s.value = 7; l.textContent = 'IELTS'; }
+  else { s.min = 60; s.max = 120; s.step = 1; s.value = 100; l.textContent = 'TOEFL'; }
+});
+
+function switchTab(t) {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('[id^="tab-"]').forEach(d => d.style.display = 'none');
+  document.getElementById('tab-' + t).style.display = '';
+}
+
+function getVal(id) { return document.getElementById(id).value; }
+function getSel(id) { return Array.from(document.getElementById(id).selectedOptions).map(o => o.value); }
+
+// ─── 统计栏 ──────────────────────────
+function showStats() {
+  const countries = new Set(PROGRAMS.map(p => p.c));
+  const majors = new Set(PROGRAMS.map(p => p.m));
+  const top10 = PROGRAMS.filter(p => parseInt(p.r) <= 10);
+  const us = PROGRAMS.filter(p => p.c === 'United States');
+  document.getElementById('statsBar').innerHTML = `
+    <span>📚 <strong>${PROGRAMS.length}</strong> 条专业</span>
+    <span>🏛️ <strong>${countries.size}</strong> 个国家</span>
+    <span>🎯 <strong>${majors.size}</strong> 个方向</span>
+    <span>🏆 <strong>${new Set(top10.map(p => p.u)).size}</strong> 所 Top 10 院校</span>
+    <span>🇺🇸 <strong>${new Set(us.map(p => p.u)).size}</strong> 所美国大学</span>
+    <span>💰 含学费/生活费/录取率/GPA要求/签证时长</span>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', showStats);
+
+// ─── 提交 ────────────────────────────
+function buildProfile() {
+  return {
+    gpa: parseFloat(getVal('gpa')),
+    language: { type: getVal('lang_type'), score: parseFloat(getVal('lang_score')) },
+    gre: getVal('gre') ? parseInt(getVal('gre')) : null,
+    budget: { total_usd: parseInt(getVal('budget')), prefer_scholarship: true },
+    safety_preference: getVal('safety_pref'),
+    career_goal: getVal('career_goal'),
+    visa_friendly_required: getVal('visa_friendly') === 'true',
+    min_rank: parseInt(getVal('min_rank')) || 0,
+    exclude_universities: [],
+    soft_background: { research: getSel('research'), work_experience: getSel('work'), hobbies: [] },
+    completed_prerequisites: getSel('prerequisites'),
+  };
+}
+
+function renderRecommendation(rec) {
+  const levelMap = { safety: '保底', match: '匹配', reach: '冲刺', lottery: '彩票' };
+  const badgeMap = { safety: 'badge-safety', match: 'badge-match', reach: 'badge-reach', lottery: 'badge-lottery' };
+  const cost = rec.costBreakdown || {};
+  const req = rec.requirements || {};
+  const langReq = req.minIelts ? 'IELTS≥' + req.minIelts : ('TOEFL≥' + (req.minToefl || ''));
+  const missing = (rec.prerequisiteMissing || []).join(', ');
+  return `<tr>
+    <td><span class="badge ${badgeMap[rec.feasibilityLevel] || ''}">${levelMap[rec.feasibilityLevel] || rec.feasibilityLevel}</span></td>
+    <td>${rec.university}</td>
+    <td>${rec.major}</td>
+    <td><strong>${rec.matchScore}</strong></td>
+    <td>${rec.admitRate}%</td>
+    <td>$${(cost.tuitionPerYear || 0).toLocaleString()}</td>
+    <td>$${(cost.livingPerYear || 0).toLocaleString()}</td>
+    <td>$${(cost.total2years || 0).toLocaleString()}</td>
+    <td>${rec.visaSupport}</td>
+    <td>建议≥${req.recommendedGpa || ''}</td>
+    <td>${langReq}</td>
+    <td>${req.greRequired || '—'}</td>
+    <td style="font-size:.78em;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis" title="${missing}">${missing || '—'}</td>
+    <td><a class="link" href="${rec.programUrl || '#'}" target="_blank">详情</a></td>
+  </tr>`;
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>分析中';
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+
+  // 用微任务让 UI 先更新
+  await new Promise(r => setTimeout(r, 50));
+
+  try {
+    const profile = buildProfile();
+    const recs = Advisor.recommend(PROGRAMS, profile);
+
+    if (!recs.length) {
+      document.getElementById('resultTable').innerHTML =
+        '<div class="warn-box">没有找到符合条件的推荐。尝试放宽排名/预算限制，或降低安全偏好。</div>';
+      document.getElementById('recommendationStats').innerHTML = '';
+    } else {
+      const levels = {};
+      recs.forEach(r => { levels[r.feasibilityLevel] = (levels[r.feasibilityLevel] || 0) + 1; });
+      const levelStr = Object.entries(levels).map(([k, v]) => {
+        const names = { safety: '保底', match: '匹配', reach: '冲刺', lottery: '彩票' };
+        return `${names[k] || k}: ${v}`;
+      }).join(' | ');
+
+      document.getElementById('recommendationStats').innerHTML = `
+        <span><strong>${recs.length}</strong> 个推荐</span>
+        <span>${levelStr}</span>
+      `;
+
+      let html = '<div class="tbl-wrap"><table><thead><tr>' +
+        '<th>层级</th><th>院校</th><th>专业</th><th>匹配分</th><th>录取率</th>' +
+        '<th>学费/年</th><th>生活费/年</th><th>总花费</th>' +
+        '<th>签证</th><th>GPA</th><th>语言</th><th>GRE</th><th>缺先修课</th><th>官网</th>' +
+        '</tr></thead><tbody>';
+      html += recs.map(r => renderRecommendation(r)).join('');
+      html += '</tbody></table></div>';
+      document.getElementById('resultTable').innerHTML = html;
+    }
+  } catch(e) {
+    document.getElementById('resultTable').innerHTML =
+      '<div class="warn-box">出错了: ' + e.message + '</div>';
+  }
+
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  btn.disabled = false; btn.innerHTML = '开始智能选校';
+  document.getElementById('loading').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+function backToForm() {
+  document.getElementById('formSection').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+function resetForm() {
+  document.getElementById('studentForm').reset();
+  document.getElementById('gpa').value = 3.2;
+  document.getElementById('lang_score').value = 7;
+  document.getElementById('budget').value = 150000;
+}
+</script>
+</body>
+</html>
