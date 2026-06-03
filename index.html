@@ -116,7 +116,7 @@ tr:hover td{background:rgba(124,92,252,.05)}
       </div>
 
       <div id="tab-bg" class="card p24 mb16" style="display:none">
-        <div class="form-grid">
+        <div class="form-grid" style="grid-template-columns:1fr 1fr">
           <div class="form-group"><label>研究/项目经历</label><select id="research" multiple size="4">
             <option value="machine learning">ML</option><option value="deep learning">DL</option><option value="NLP">NLP</option>
             <option value="CV">CV</option><option value="data mining">数据挖掘</option><option value="fintech">金融科技</option>
@@ -127,7 +127,7 @@ tr:hover td{background:rgba(124,92,252,.05)}
             <option value="open source contributor">开源贡献</option><option value="published paper">发表论文</option>
             <option value="startup founder">创业</option><option value="accounting internship">会计实习</option>
           </select></div>
-          <div class="form-group"><label>已修先修课</label><select id="prerequisites" multiple size="5">
+          <div class="form-group" style="grid-column:span 2"><label>已修先修课</label><select id="prerequisites" multiple size="4">
             <option value="Calculus I-II">微积分</option><option value="Linear Algebra">线性代数</option>
             <option value="Probability & Statistics">概率统计</option><option value="Statistics">统计</option>
             <option value="Discrete Mathematics">离散数学</option><option value="Programming (Python)">Python</option>
@@ -135,6 +135,14 @@ tr:hover td{background:rgba(124,92,252,.05)}
             <option value="Macroeconomics">宏观经济学</option><option value="Financial Accounting">会计</option>
             <option value="Corporate Finance">公司金融</option><option value="Econometrics">计量经济学</option>
           </select></div>
+          <div class="form-group" style="grid-column:span 2">
+            <label>粘贴简历文本（可选·AI 自动分析并填充背景）</label>
+            <textarea id="resumeText" rows="6" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em;padding:8px;resize:vertical;font-family:monospace" placeholder="粘贴你的简历内容在这里，点击下方按钮让 AI 分析..."></textarea>
+            <div class="flex gap8 mt8">
+              <button type="button" class="btn btn-sec" onclick="analyzeResumeText()" style="font-size:.8em" id="analyzeResumeBtn">🤖 AI 分析简历</button>
+              <span id="resumeAnalyzeStatus" style="font-size:.75em;color:var(--muted);align-self:center"></span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -253,15 +261,32 @@ async function llmBackgroundAnalysis(profile) {
   const bg = profile.soft_background || {};
   const research = bg.research || [];
   const work = bg.work_experience || [];
+  const resumeText = profile._resume_text || '';
+  const resumeParsed = profile._resume_extracted;
 
-  if (!research.length && !work.length) return null;
+  // 如果既没有选择项也没有粘贴简历，跳过
+  if (!research.length && !work.length && !resumeText) return null;
 
-  const parts = [];
-  if (research.length) parts.push(`Research/Projects: ${research.join(', ')}`);
-  if (work.length) parts.push(`Work Experience: ${work.join(', ')}`);
-  parts.push(`GPA: ${profile.gpa || 'N/A'}`);
-  const lang = profile.language || {};
-  if (lang.score) parts.push(`${lang.type}: ${lang.score}`);
+  let parts = [];
+  if (resumeText) {
+    // 有完整简历文本，让 LLM 做全面评估
+    parts.push('=== 简历原文 ===\n' + resumeText.substring(0, 2000));
+    if (resumeParsed) {
+      if (resumeParsed.education?.length) parts.push('\n=== 教育背景 ===\n' + JSON.stringify(resumeParsed.education, null, 2));
+      if (resumeParsed.work_experience?.length) parts.push('\n=== 工作经历 ===\n' + JSON.stringify(resumeParsed.work_experience, null, 2));
+      if (resumeParsed.skills?.length) parts.push('\n=== 技能 ===\n' + resumeParsed.skills.join(', '));
+      if (resumeParsed.projects?.length) parts.push('\n=== 项目 ===\n' + JSON.stringify(resumeParsed.projects, null, 2));
+    }
+    parts.push(`\nGPA: ${profile.gpa || 'N/A'}`);
+    const lang = profile.language || {};
+    if (lang.score) parts.push(`${lang.type}: ${lang.score}`);
+  } else {
+    if (research.length) parts.push(`Research/Projects: ${research.join(', ')}`);
+    if (work.length) parts.push(`Work Experience: ${work.join(', ')}`);
+    parts.push(`GPA: ${profile.gpa || 'N/A'}`);
+    const lang = profile.language || {};
+    if (lang.score) parts.push(`${lang.type}: ${lang.score}`);
+  }
 
   try {
     const resp = await fetch(baseUrl + '/chat/completions', {
@@ -307,8 +332,98 @@ async function llmBackgroundAnalysis(profile) {
   }
 }
 
+// ─── AI 分析简历文本 ─────────────────
+async function analyzeResumeText() {
+  const apiKey = localStorage.getItem('llm_api_key');
+  if (!apiKey) { alert('请先在 🔑 API 设置中配置你的 API Key'); return; }
+
+  const text = document.getElementById('resumeText').value.trim();
+  if (!text || text.length < 20) { alert('请粘贴至少 20 个字符的简历文本'); return; }
+
+  const btn = document.getElementById('analyzeResumeBtn');
+  const status = document.getElementById('resumeAnalyzeStatus');
+  btn.disabled = true; status.textContent = 'AI 分析中...';
+
+  const baseUrl = localStorage.getItem('llm_base_url') || 'https://api.deepseek.com/v1';
+  const model = localStorage.getItem('llm_model') || 'deepseek-chat';
+
+  try {
+    const resp = await fetch(baseUrl + '/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({
+        model: model,
+        messages: [
+          { role: 'system', content: 'You are a resume parser. Extract structured info from the resume text below and output ONLY a JSON object with these fields (use empty arrays if none): education (array of {degree, major, university, gpa}), work_experience (array of {position, company, duration, description}), skills (array of strings), projects (array of {name, description, technologies}), certifications (array of strings). Do not include any other text.' },
+          { role: 'user', content: text.substring(0, 4000) }
+        ],
+        max_tokens: 1000,
+        temperature: 0.1,
+      })
+    });
+    const data = await resp.json();
+    const content = data.choices?.[0]?.message?.content || '';
+
+    // 尝试解析 JSON
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) { alert('AI 返回格式异常，请重试'); console.error(content); return; }
+    const parsed = JSON.parse(jsonMatch[0]);
+
+    // 自动填充表单
+    let fillMsg = [];
+
+    // GPA
+    if (parsed.education && parsed.education.length) {
+      const lastEdu = parsed.education[parsed.education.length - 1];
+      if (lastEdu.gpa) {
+        const g = parseFloat(lastEdu.gpa);
+        if (!isNaN(g) && g >= 2.0 && g <= 4.0) {
+          document.getElementById('gpa').value = g;
+          fillMsg.push('GPA → ' + g);
+        }
+      }
+    }
+
+    // 工作经历
+    if (parsed.work_experience && parsed.work_experience.length) {
+      const names = parsed.work_experience.map(w => w.position || w.company || '').filter(Boolean);
+      const sel = document.getElementById('work');
+      // 模糊匹配列表中的选项
+      names.forEach(name => {
+        const n = name.toLowerCase();
+        Array.from(sel.options).forEach(o => {
+          if (n.includes(o.value.toLowerCase().replace(/[^a-z]/g, ''))) o.selected = true;
+          if (o.value.toLowerCase().includes(n.replace(/[^a-z]/g, ''))) o.selected = true;
+        });
+      });
+      fillMsg.push('工作经历已部分填充');
+    }
+
+    // 技能 → 尝试匹配到研究经历
+    if (parsed.skills && parsed.skills.length) {
+      const skillText = parsed.skills.join(' ');
+      const sel = document.getElementById('research');
+      Array.from(sel.options).forEach(o => {
+        if (skillText.toLowerCase().includes(o.value.toLowerCase())) o.selected = true;
+      });
+      fillMsg.push('技能已匹配到研究/项目领域');
+    }
+
+    // 同时保存原始提取结果供提交时 LLM 评估使用
+    window._resumeExtracted = parsed;
+
+    status.textContent = '✅ 分析完成！' + fillMsg.join('、');
+    setTimeout(() => { status.textContent = ''; }, 3000);
+  } catch(e) {
+    status.textContent = '❌ 分析失败: ' + e.message;
+  }
+  btn.disabled = false;
+}
+
 // ─── 提交 ────────────────────────────
 function buildProfile() {
+  const bg = { research: getSel('research'), work_experience: getSel('work'), hobbies: [] };
+  const resumeText = document.getElementById('resumeText').value.trim();
   return {
     gpa: parseFloat(getVal('gpa')),
     language: { type: getVal('lang_type'), score: parseFloat(getVal('lang_score')) },
@@ -319,8 +434,10 @@ function buildProfile() {
     visa_friendly_required: getVal('visa_friendly') === 'true',
     min_rank: parseInt(getVal('min_rank')) || 0,
     exclude_universities: [],
-    soft_background: { research: getSel('research'), work_experience: getSel('work'), hobbies: [] },
+    soft_background: bg,
     completed_prerequisites: getSel('prerequisites'),
+    _resume_text: resumeText || null,
+    _resume_extracted: window._resumeExtracted || null,
   };
 }
 
