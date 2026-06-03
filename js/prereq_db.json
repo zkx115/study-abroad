@@ -1,0 +1,713 @@
+{
+  "Massachusetts Institute of Technology (MIT)|1": {
+    "name": "Massachusetts Institute of Technology (MIT)",
+    "rank": 1,
+    "url": "https://www.mit.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "University of Oxford|1": {
+    "name": "University of Oxford",
+    "rank": 1,
+    "url": "https://www.ox.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Imperial College London|2": {
+    "name": "Imperial College London",
+    "rank": 2,
+    "url": "https://www.imperial.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Harvard University|3": {
+    "name": "Harvard University",
+    "rank": 3,
+    "url": "https://www.harvard.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Princeton University|4": {
+    "name": "Princeton University",
+    "rank": 4,
+    "url": "https://www.princeton.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "University of Cambridge|5": {
+    "name": "University of Cambridge",
+    "rank": 5,
+    "url": "https://www.cam.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Stanford University|6": {
+    "name": "Stanford University",
+    "rank": 6,
+    "url": "https://www.stanford.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "ETH Zurich - Swiss Federal Institute of Technology|7": {
+    "name": "ETH Zurich - Swiss Federal Institute of Technology",
+    "rank": 7,
+    "url": "https://www.ethzurichswissfederal.ch",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "California Institute of Technology (Caltech)|7": {
+    "name": "California Institute of Technology (Caltech)",
+    "rank": 7,
+    "url": "https://www.caltech.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "National University of Singapore (NUS)|8": {
+    "name": "National University of Singapore (NUS)",
+    "rank": 8,
+    "url": "https://www.nus.edu.sg",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "University of California, Berkeley (UCB)|8": {
+    "name": "University of California, Berkeley (UCB)",
+    "rank": 8,
+    "url": "https://www.berkeley.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "UCL|9": {
+    "name": "UCL",
+    "rank": 9,
+    "url": "https://www.ucl.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Yale University|10": {
+    "name": "Yale University",
+    "rank": 10,
+    "url": "https://www.yale.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "University of Pennsylvania|11": {
+    "name": "University of Pennsylvania",
+    "rank": 11,
+    "url": "https://www.upenn.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "ETH Zurich|11": {
+    "name": "ETH Zurich",
+    "rank": 11,
+    "url": "https://www.ethz.ch",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Tsinghua University|12": {
+    "name": "Tsinghua University",
+    "rank": 12,
+    "url": "https://www.tsinghua.edu.cn",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Melbourne|13": {
+    "name": "The University of Melbourne",
+    "rank": 13,
+    "url": "https://www.theuniversityofmelbourne.edu.au",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Peking University|13": {
+    "name": "Peking University",
+    "rank": 13,
+    "url": "https://www.pku.edu.cn",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Chicago|14": {
+    "name": "The University of Chicago",
+    "rank": 14,
+    "url": "https://www.theuniversityofchicago.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Financial Engineering": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Financial Mathematics;Econometrics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning",
+      "Statistics": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python)"
+    },
+    "source": "manual"
+  },
+  "Nanyang Technological University, Singapore (NTU)|15": {
+    "name": "Nanyang Technological University, Singapore (NTU)",
+    "rank": 15,
+    "url": "https://www.nanyangtechnologicaluniversity.edu.sg",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Cornell University|16": {
+    "name": "Cornell University",
+    "rank": 16,
+    "url": "https://www.cornell.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Johns Hopkins University|16": {
+    "name": "Johns Hopkins University",
+    "rank": 16,
+    "url": "https://www.jhu.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Hong Kong|17": {
+    "name": "The University of Hong Kong",
+    "rank": 17,
+    "url": "https://www.theuniversityofhongkong.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Sydney|18": {
+    "name": "The University of Sydney",
+    "rank": 18,
+    "url": "https://www.theuniversityofsydney.edu.au",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Columbia University|18": {
+    "name": "Columbia University",
+    "rank": 18,
+    "url": "https://www.columbia.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of California, Los Angeles (UCLA)|18": {
+    "name": "University of California, Los Angeles (UCLA)",
+    "rank": 18,
+    "url": "https://www.ucla.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of New South Wales (UNSW Sydney)|19": {
+    "name": "The University of New South Wales (UNSW Sydney)",
+    "rank": 19,
+    "url": "https://www.theuniversityofnewsouthwales.edu.au",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of Chicago|21": {
+    "name": "University of Chicago",
+    "rank": 21,
+    "url": "https://www.uchicago.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of Toronto|21": {
+    "name": "University of Toronto",
+    "rank": 21,
+    "url": "https://www.utoronto.ca",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of Michigan-Ann Arbor|22": {
+    "name": "University of Michigan-Ann Arbor",
+    "rank": 22,
+    "url": "https://www.umich.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Université PSL|24": {
+    "name": "Université PSL",
+    "rank": 24,
+    "url": "https://www.psl.eu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Carnegie Mellon University|24": {
+    "name": "Carnegie Mellon University",
+    "rank": 24,
+    "url": "https://www.cmu.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of Washington|25": {
+    "name": "University of Washington",
+    "rank": 25,
+    "url": "https://www.washington.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "EPFL|26": {
+    "name": "EPFL",
+    "rank": 26,
+    "url": "https://www.epfl.ch",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Technical University of Munich|26": {
+    "name": "Technical University of Munich",
+    "rank": 26,
+    "url": "https://www.tum.de",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Edinburgh|27": {
+    "name": "The University of Edinburgh",
+    "rank": 27,
+    "url": "https://www.theuniversityofedinburgh.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Duke University|27": {
+    "name": "Duke University",
+    "rank": 27,
+    "url": "https://www.duke.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Tokyo|28": {
+    "name": "The University of Tokyo",
+    "rank": 28,
+    "url": "https://www.theuniversityoftokyo.ac.jp",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "McGill University|29": {
+    "name": "McGill University",
+    "rank": 29,
+    "url": "https://www.mcgill.ca",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "University of Edinburgh|29": {
+    "name": "University of Edinburgh",
+    "rank": 29,
+    "url": "https://www.ed.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The Australian National University|30": {
+    "name": "The Australian National University",
+    "rank": 30,
+    "url": "https://www.theaustraliannational.edu.au",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Mechanical Engineering": "Calculus I-III;Linear Algebra;Thermodynamics;Material Science;Fluid Mechanics;Programming (Python)",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Seoul National University|31": {
+    "name": "Seoul National University",
+    "rank": 31,
+    "url": "https://www.snu.ac.kr",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "Northwestern University|31": {
+    "name": "Northwestern University",
+    "rank": 31,
+    "url": "https://www.northwestern.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "École Polytechnique Fédérale de Lausanne|32": {
+    "name": "École Polytechnique Fédérale de Lausanne",
+    "rank": 32,
+    "url": "https://www.colepolytechniquefdraledelausa.ch",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "New York University (NYU)|33": {
+    "name": "New York University (NYU)",
+    "rank": 33,
+    "url": "https://www.nyu.edu",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  },
+  "The University of Manchester|34": {
+    "name": "The University of Manchester",
+    "rank": 34,
+    "url": "https://www.theuniversityofmanchester.ac.uk",
+    "admissions_url": null,
+    "prereqs_by_major": {
+      "Data Science": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Statistics",
+      "Electrical Engineering": "Calculus I-III;Linear Algebra;Probability & Statistics;Programming (Python);Signals and Systems;Electromagnetics",
+      "Software Engineering": "Programming (Python);Programming (C++/Java);Data Structures & Algorithms;Database Systems;Software Design",
+      "Computer Science": "Data Structures & Algorithms;Programming (Python);Calculus I-II;Linear Algebra;Discrete Mathematics;Probability & Statistics",
+      "Artificial Intelligence": "Calculus I-II;Linear Algebra;Probability & Statistics;Programming (Python);Data Structures & Algorithms;Machine Learning"
+    },
+    "source": "manual"
+  }
+}
