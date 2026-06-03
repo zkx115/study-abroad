@@ -61,6 +61,33 @@ tr:hover td{background:rgba(124,92,252,.05)}
   <!-- 统计栏 -->
   <div class="stats-bar" id="statsBar"></div>
 
+  <!-- API 配置区（可折叠） -->
+  <div style="text-align:right;margin-bottom:8px">
+    <button class="quick-btn" onclick="toggleApiConfig()" id="apiBtn" style="border-color:#7c5cfc;color:#7c5cfc;font-size:.78em">🔑 配置 API Key（可选·用于 AI 话术分析）</button>
+    <span id="apiKeyStatus" style="font-size:.72em;color:var(--muted);margin-left:8px"></span>
+  </div>
+  <div id="apiConfig" class="card p16 mb16" style="display:none">
+    <div class="form-grid">
+      <div class="form-group" style="grid-column:span 2">
+        <label>LLM API Key（可选）</label>
+        <input type="password" id="apiKeyInput" placeholder="sk-..." style="font-family:monospace;font-size:.85em">
+        <span class="hint">输入你的 DeepSeek/OpenAI Key，仅在浏览器本地存储，不会上传到任何服务器。用于 AI 简历评估和话术分析。</span>
+      </div>
+      <div class="form-group">
+        <label>Base URL</label>
+        <input type="url" id="apiBaseUrl" value="https://api.deepseek.com/v1">
+      </div>
+      <div class="form-group">
+        <label>模型</label>
+        <input type="text" id="apiModel" value="deepseek-chat">
+      </div>
+    </div>
+    <div class="flex gap8 mt8">
+      <button class="btn btn-sec" onclick="saveApiKey()" style="font-size:.8em">保存</button>
+      <button class="btn btn-sec" onclick="clearApiKey()" style="font-size:.8em">清除</button>
+    </div>
+  </div>
+
   <div id="formSection">
     <div class="tabs">
       <button class="tab active" onclick="switchTab('basic')">硬性条件</button>
@@ -123,6 +150,7 @@ tr:hover td{background:rgba(124,92,252,.05)}
   </div>
 
   <div id="results" style="display:none">
+    <div id="bgAnalysis"></div>
     <div id="recommendationStats" class="flex between center mb8" style="padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px"></div>
     <div id="resultTable" class="mb16"></div>
     <div class="flex center mb16">
@@ -168,7 +196,116 @@ function showStats() {
   `;
 }
 
-document.addEventListener('DOMContentLoaded', showStats);
+document.addEventListener('DOMContentLoaded', function() {
+  showStats();
+  loadApiKey();
+});
+
+// ─── API Key 管理 ────────────────────
+function toggleApiConfig() {
+  const el = document.getElementById('apiConfig');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function loadApiKey() {
+  const key = localStorage.getItem('llm_api_key') || '';
+  const baseUrl = localStorage.getItem('llm_base_url') || 'https://api.deepseek.com/v1';
+  const model = localStorage.getItem('llm_model') || 'deepseek-chat';
+  document.getElementById('apiKeyInput').value = key;
+  document.getElementById('apiBaseUrl').value = baseUrl;
+  document.getElementById('apiModel').value = model;
+  updateApiKeyStatus();
+}
+
+function saveApiKey() {
+  const key = document.getElementById('apiKeyInput').value.trim();
+  const baseUrl = document.getElementById('apiBaseUrl').value.trim();
+  const model = document.getElementById('apiModel').value.trim();
+  if (key) localStorage.setItem('llm_api_key', key);
+  if (baseUrl) localStorage.setItem('llm_base_url', baseUrl);
+  if (model) localStorage.setItem('llm_model', model);
+  updateApiKeyStatus();
+  alert('✅ API Key 已保存到浏览器本地（localStorage）');
+}
+
+function clearApiKey() {
+  localStorage.removeItem('llm_api_key');
+  localStorage.removeItem('llm_base_url');
+  localStorage.removeItem('llm_model');
+  document.getElementById('apiKeyInput').value = '';
+  updateApiKeyStatus();
+  alert('已清除 API Key');
+}
+
+function updateApiKeyStatus() {
+  const key = localStorage.getItem('llm_api_key') || '';
+  const el = document.getElementById('apiKeyStatus');
+  el.innerHTML = key ? '✅ Key 已配置' : '';
+}
+
+// ─── LLM 背景评估 ────────────────────
+async function llmBackgroundAnalysis(profile) {
+  const apiKey = localStorage.getItem('llm_api_key');
+  if (!apiKey) return null;
+
+  const baseUrl = localStorage.getItem('llm_base_url') || 'https://api.deepseek.com/v1';
+  const model = localStorage.getItem('llm_model') || 'deepseek-chat';
+  const bg = profile.soft_background || {};
+  const research = bg.research || [];
+  const work = bg.work_experience || [];
+
+  if (!research.length && !work.length) return null;
+
+  const parts = [];
+  if (research.length) parts.push(`Research/Projects: ${research.join(', ')}`);
+  if (work.length) parts.push(`Work Experience: ${work.join(', ')}`);
+  parts.push(`GPA: ${profile.gpa || 'N/A'}`);
+  const lang = profile.language || {};
+  if (lang.score) parts.push(`${lang.type}: ${lang.score}`);
+
+  try {
+    const resp = await fetch(baseUrl + '/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({
+        model: model,
+        messages: [
+          { role: 'system', content: '你是留学申请评审专家。用中文写分析话术，先打分再写分析。' },
+          { role: 'user', content:
+            '评估以下申请者的背景（0-10分），写出 2-4 句中文分析话术，指出优点/不足/改进建议。\n\n'
+            + parts.join('\n') + '\n\n格式：\nScore: X.X\n分析：你的分析文字...' }
+        ],
+        max_tokens: 300,
+        temperature: 0.7,
+      })
+    });
+    const data = await resp.json();
+    const text = data.choices?.[0]?.message?.content || '';
+    
+    // 提取分数和分析
+    const nums = text.match(/(\d+(?:\.\d+)?)/);
+    let analysis = '';
+    const zhMatch = text.match(/分析[：:]\s*(.+?)(?:\n\n|$)/s);
+    if (zhMatch) analysis = zhMatch[1].trim();
+    else {
+      const lines = text.split('\n');
+      let inAnalysis = false;
+      for (const line of lines) {
+        if (line.includes('分析') && (line.includes('：') || line.includes(':'))) {
+          inAnalysis = true;
+          const rest = line.replace(/^.*?分析[：:]\s*/, '');
+          if (rest) analysis = rest;
+        } else if (inAnalysis && line.trim()) {
+          analysis += ' ' + line.trim();
+        }
+      }
+    }
+    return { score: nums ? parseFloat(nums[0]) : null, text: analysis || text };
+  } catch(e) {
+    console.warn('LLM eval failed:', e);
+    return null;
+  }
+}
 
 // ─── 提交 ────────────────────────────
 function buildProfile() {
@@ -224,6 +361,20 @@ async function submitForm(e) {
 
   try {
     const profile = buildProfile();
+    
+    // 阶段1: LLM 背景评估（如果配置了 API Key）
+    let bgHtml = '';
+    const llmResult = await llmBackgroundAnalysis(profile);
+    if (llmResult && llmResult.text) {
+      bgHtml = `<div class="card p16 mb16" style="border-left:3px solid var(--accent)">
+        <div style="font-size:.8em;color:var(--muted);margin-bottom:4px">🤖 AI 背景评估</div>
+        <div style="color:var(--text);font-size:.9em;line-height:1.6">${llmResult.text.replace(/\n/g, '<br>')}</div>
+        ${llmResult.score ? `<div style="margin-top:6px;font-size:.78em;color:var(--muted)">综合评分: ${llmResult.score}/10</div>` : ''}
+      </div>`;
+    }
+    document.getElementById('bgAnalysis').innerHTML = bgHtml;
+    
+    // 阶段2: 核心推荐
     const recs = Advisor.recommend(PROGRAMS, profile);
 
     if (!recs.length) {
