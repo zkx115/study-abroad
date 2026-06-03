@@ -616,6 +616,11 @@ function renderRecommendation(rec) {
   const req = rec.requirements || {};
   const langReq = req.minIelts ? 'IELTS≥' + req.minIelts : ('TOEFL≥' + (req.minToefl || ''));
   const missing = (rec.prerequisiteMissing || []).join(', ');
+  // 有先修课数据就显示，没有则给出官网链接供自查
+  const hasPrereqData = rec.prerequisiteMissing && rec.prerequisiteMissing.length > 0;
+  const prereqCell = hasPrereqData
+    ? `<span style="font-size:.78em;color:var(--muted)" title="${missing}">${missing}</span>`
+    : `<a class="link" href="${rec.programUrl || '#'}" target="_blank" title="查看官网先修课要求">查看官网→</a>`;
   return `<tr>
     <td><span class="badge ${badgeMap[rec.feasibilityLevel] || ''}">${levelMap[rec.feasibilityLevel] || rec.feasibilityLevel}</span></td>
     <td>${rec.university}</td>
@@ -629,8 +634,8 @@ function renderRecommendation(rec) {
     <td>建议≥${req.recommendedGpa || ''}</td>
     <td>${langReq}</td>
     <td>${req.greRequired || '—'}</td>
-    <td style="font-size:.78em;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis" title="${missing}">${missing || '—'}</td>
-    <td><a class="link" href="${rec.programUrl || '#'}" target="_blank">详情</a></td>
+    <td>${prereqCell}</td>
+    <td><a class="link" href="${rec.programUrl || '#'}" target="_blank">🏠 官网</a></td>
   </tr>`;
 }
 

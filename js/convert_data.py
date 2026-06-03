@@ -5,7 +5,7 @@ import json
 import os
 import re
 
-SRC = os.path.join(os.path.dirname(__file__), "../../workspace/university_db/programs.csv")
+SRC = os.path.join(os.path.dirname(__file__), "../../workspace/university_db/programs_v2.csv")
 DST = os.path.join(os.path.dirname(__file__), "programs.js")
 
 # 字段别名缩短（节省大小）
