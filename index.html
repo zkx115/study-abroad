@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>留学选校智能助手</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 :root{--bg:#0f0f14;--card:#1a1a24;--border:#2a2a3a;--text:#e0e0e8;--muted:#8888a0;--accent:#7c5cfc;--glow:rgba(124,92,252,0.3);--green:#34d399;--orange:#f59e0b;--red:#ef4444;--blue:#60a5fa;}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -136,7 +139,17 @@ tr:hover td{background:rgba(124,92,252,.05)}
             <option value="Corporate Finance">公司金融</option><option value="Econometrics">计量经济学</option>
           </select></div>
           <div class="form-group" style="grid-column:span 2">
-            <label>粘贴简历文本（可选·AI 自动分析并填充背景）</label>
+            <label>上传成绩单（PDF/Excel）</label>
+            <input type="file" id="transcriptFile" accept=".pdf,.xlsx,.xls" onchange="uploadTranscript()" style="padding:6px;font-size:.85em">
+            <span id="transcriptStatus" style="font-size:.75em;color:var(--muted)">上传后 AI 自动提取课程与 GPA</span>
+          </div>
+          <div class="form-group" style="grid-column:span 2">
+            <label>上传简历（PDF/DOCX/TXT）</label>
+            <input type="file" id="resumeFile" accept=".pdf,.docx,.txt" onchange="uploadResume()" style="padding:6px;font-size:.85em">
+            <span id="resumeStatus" style="font-size:.75em;color:var(--muted)">上传后 AI 自动分析并填充背景</span>
+          </div>
+          <div class="form-group" style="grid-column:span 2">
+            <label>或直接粘贴简历文本（可选）</label>
             <textarea id="resumeText" rows="6" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em;padding:8px;resize:vertical;font-family:monospace" placeholder="粘贴你的简历内容在这里，点击下方按钮让 AI 分析..."></textarea>
             <div class="flex gap8 mt8">
               <button type="button" class="btn btn-sec" onclick="analyzeResumeText()" style="font-size:.8em" id="analyzeResumeBtn">🤖 AI 分析简历</button>
@@ -418,6 +431,130 @@ async function analyzeResumeText() {
     status.textContent = '❌ 分析失败: ' + e.message;
   }
   btn.disabled = false;
+}
+
+// ─── 上传成绩单 ──────────────────────
+async function uploadTranscript() {
+  const file = document.getElementById('transcriptFile').files[0];
+  if (!file) return;
+  const apiKey = localStorage.getItem('llm_api_key');
+  if (!apiKey) { alert('请先在 🔑 API 设置中配置 API Key'); return; }
+
+  const status = document.getElementById('transcriptStatus');
+  status.textContent = '⏳ 正在解析成绩单...';
+
+  try {
+    let text = '';
+    if (file.name.endsWith('.pdf')) {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n';
+      }
+    } else {
+      // xlsx/xls - 读取为文本
+      text = await file.text();
+    }
+
+    if (text.trim().length < 20) { status.textContent = '❌ 未能提取有效文本'; return; }
+
+    // 调用 LLM 提取课程和 GPA
+    const baseUrl = localStorage.getItem('llm_base_url') || 'https://api.deepseek.com/v1';
+    const model = localStorage.getItem('llm_model') || 'deepseek-chat';
+    const resp = await fetch(baseUrl + '/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({
+        model, max_tokens: 800, temperature: 0.1,
+        messages: [
+          { role: 'system', content: '从成绩单文本中提取信息。只输出 JSON，格式：{"gpa": 3.5, "courses": ["Calculus I-II", "Linear Algebra", ...], "course_count": 12}' },
+          { role: 'user', content: text.substring(0, 4000) }
+        ]
+      })
+    });
+    const data = await resp.json();
+    const content = data.choices?.[0]?.message?.content || '';
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) { status.textContent = '❌ AI 解析异常'; return; }
+    const parsed = JSON.parse(jsonMatch[0]);
+
+    let msgs = [];
+    // 填充 GPA
+    if (parsed.gpa) {
+      const g = parseFloat(parsed.gpa);
+      if (!isNaN(g) && g >= 2.0 && g <= 4.0) {
+        document.getElementById('gpa').value = g;
+        msgs.push('GPA → ' + g);
+      }
+    }
+    // 填充先修课
+    if (parsed.courses && parsed.courses.length) {
+      const sel = document.getElementById('prerequisites');
+      parsed.courses.forEach(c => {
+        const cl = c.toLowerCase();
+        Array.from(sel.options).forEach(o => {
+          if (cl.includes(o.value.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 6))) o.selected = true;
+        });
+      });
+      msgs.push('课程 ' + parsed.courses.length + ' 门已匹配');
+    }
+    status.textContent = '✅ ' + msgs.join('、');
+    setTimeout(() => { status.textContent = '上传后 AI 自动提取课程与 GPA'; }, 5000);
+  } catch(e) {
+    status.textContent = '❌ 解析失败: ' + e.message;
+  }
+}
+
+// ─── 上传简历 ──────────────────────
+async function uploadResume() {
+  const file = document.getElementById('resumeFile').files[0];
+  if (!file) return;
+  const apiKey = localStorage.getItem('llm_api_key');
+  if (!apiKey) { alert('请先在 🔑 API 设置中配置 API Key'); return; }
+
+  const status = document.getElementById('resumeStatus');
+  status.textContent = '⏳ 正在解析简历...';
+
+  try {
+    let text = '';
+    const ext = file.name.split('.').pop().toLowerCase();
+
+    if (ext === 'pdf') {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n';
+      }
+    } else if (ext === 'docx') {
+      // docx: 用 JSZip 读取纯文本
+      const arrayBuffer = await file.arrayBuffer();
+      const zip = new JSZip();
+      await zip.loadAsync(arrayBuffer);
+      const doc = await zip.file('word/document.xml').async('text');
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(doc, 'text/xml');
+      const texts = xml.evaluate('//w:t', xml, null, XPathResult.ANY_TYPE, null);
+      let t;
+      while ((t = texts.iterateNext())) text += t.textContent + ' ';
+    } else {
+      text = await file.text();
+    }
+
+    if (text.trim().length < 20) { status.textContent = '❌ 未能提取有效文本'; return; }
+
+    // 把提取的文本填入 textarea 并触发 AI 分析
+    document.getElementById('resumeText').value = text;
+    status.textContent = '✅ 文本已提取，正在 AI 分析...';
+    await analyzeResumeText();
+    status.textContent = '✅ 简历解析完成！已自动填充表单';
+    setTimeout(() => { status.textContent = '上传后 AI 自动分析并填充背景'; }, 5000);
+  } catch(e) {
+    status.textContent = '❌ 解析失败: ' + e.message;
+  }
 }
 
 // ─── 提交 ────────────────────────────
